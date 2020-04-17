@@ -8,7 +8,7 @@ The Student Grade Table is a dynamic web application for teachers who want to re
 
 ## Getting Started
 
-1. Create a new repository on your GitHub Account, initialized with a `README.md`.
+1. Create a new repository named `sgt-react` on your GitHub account, initialized with a `README.md`.
 1. Clone the repository into your `lfz/` directory.
 1. Copy the starter files from this repository (except `features/` and the GIF) so your directory structure looks like this: **EVERY FILE COUNTS**.
     ```
