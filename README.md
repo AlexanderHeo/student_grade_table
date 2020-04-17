@@ -4,15 +4,47 @@ The Student Grade Table: Written in React
 
 ## Introduction
 
-For this project, you will be building a single-page React application that communicates with a server to manipulate data.
+The Student Grade Table is a dynamic web application for teachers who want to record the grades of their students.
 
 ## Getting Started
 
-1. Fork this repository to your GitHub account and clone it into the `lfz` directory on your local machine.
+1. Create a new repository on your GitHub Account, initialized with a `README.md`.
+1. Clone the repository into your `lfz/` directory.
+1. Copy the starter files from this repository (except `features/` and the GIF) so your directory structure looks like this: **EVERY FILE COUNTS**.
+    ```
+    sgt-react/
+    ├── .gitignore
+    ├── .npmrc
+    ├── README.md
+    ├── client/
+    │   ├── components/
+    │   │   └── app.jsx
+    │   └── index.jsx
+    ├── database/
+    │   └── db.json
+    ├── package.json
+    ├── server/
+    │   ├── index.js
+    │   └── public/
+    │       ├── images/
+    │       │   └── favicon.png
+    │       ├── index.html
+    │       └── styles.css
+    └── webpack.config.js
+    ```
 1. Install all dependencies in `package.json` with NPM.
     ```bash
     npm install
     ```
+1. Commit the starter files to `master` and `git push origin master` before working on the first feature.
+
+## Workflow
+
+Each feature should be implemented on its own branch. Commit at each step of each feature. **DO NOT WAIT TO COMMIT AT THE END**. Make a small amount of progress, and then commit. You will probably have anywhere from 5-10 commits per feature.
+
+Open a Pull Request from your feature branch to your master branch and submit it for approval before moving on.
+
+Your feature to look and function like the example GIF with no errors in the browser console.
 
 ## NPM Scripts
 
