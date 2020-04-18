@@ -49,6 +49,6 @@ A school has a list of student grades on a server and the teachers would like a 
 
 ### Submitting Your Work
 
-When this feature is complete, be sure to push all new commits to `origin view-all-grades`. Then open a Pull Request on your Fork of `sgt-react` to merge `view-all-grades` into `master`.
+When this feature is complete, be sure to push all new commits to `origin view-all-grades`. Then open a Pull Request on your GitHub repository `sgt-react` to merge `view-all-grades` into `master`.
 
 Get an instructor to **Approve** your Pull Request before merging it into `master` and moving to the next feature.  **Be sure to include a screenshot or gif of your app in the Pull Request comment.** After you get approval, merge your feature branch.

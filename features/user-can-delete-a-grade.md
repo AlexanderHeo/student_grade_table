@@ -40,6 +40,6 @@ Teachers at the school would like to delete the grades of students that get kick
 
 ### Submitting Your Work
 
-When this feature is complete, be sure to push all new commits to `origin delete-a-grade`. Then open a Pull Request on your Fork of `sgt-react` to merge `delete-a-grade` into `master`.
+When this feature is complete, be sure to push all new commits to `origin delete-a-grade`. Then open a Pull Request on your GitHub repository `sgt-react` to merge `delete-a-grade` into `master`.
 
 Get an instructor to **Approve** your Pull Request before merging it into `master` and moving to the next feature.  **Be sure to include a screenshot or gif of your app in the Pull Request comment.** After you get approval, merge your feature branch.
