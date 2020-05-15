@@ -1,0 +1,33 @@
+body {
+  margin: 0;
+  display: flex;
+}
+.sgt {
+  margin: 40px 40px;
+  /* border: 1px dotted orange; */
+}
+.gradetable,
+.header {
+  width: 1000px;
+}
+.header {
+  margin: 25px 0;
+}
+table {
+  width: 1000px;
+  border-collapse: separate;
+}
+td, th {
+  border: 1px solid rgb(100, 100, 145);
+  text-align: left;
+  padding: 8px;
+  margin: 2px;
+}
+th {
+  padding: 18px 8px;
+  text-align: center;
+  font-size: 24px;
+}
+thead tr, tr:nth-child(even) {
+  background-color: rgb(188, 213, 238);
+}
