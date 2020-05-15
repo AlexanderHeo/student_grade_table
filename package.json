@@ -4,6 +4,7 @@
   "description": "The Student Grade Table: Written in React",
   "main": "server/index.js",
   "scripts": {
+    "watch": "webpack --mode=development --watch --devtool=source-map",
     "client": "webpack-dev-server",
     "start": "node server/index.js",
     "build": "webpack --mode=production",
