@@ -15,44 +15,30 @@ class App extends React.Component {
     this.getAllGrades();
   }
 
-  // componentDidUpdate() {
-  //   console.log(this.state);
-  // }
-
   getAllGrades() {
     fetch('/api/grades')
       .then(response => {
         return response.json();
       })
       .then(jsonData => {
-        const grades = jsonData;
-        const gradesArr = [];
-        jsonData.map(x => {
-          gradesArr.push(x.grade);
-        });
-        const avg = gradesArr.reduce((acc, cur) => {
-          return acc + cur;
-        });
         this.setState({
-          grades: jsonData,
-          avgGrade: Math.round(avg / grades.length)
-        });
+          grades: jsonData
+        }, () => { this.getAverageGrades(jsonData); });
       });
   }
 
-  // getAverageGrades() {
-  //   const gradesArr = [];
-  //   const mapped = grades.map(x => {
-  //     gradesArr.push(x.grade);
-  //   });
-  //   const avg = gradesArr.reduce((acc, cur) => {
-  //     return acc + cur;
-  //   });
-  //   return avg;
-  // this.setState({
-  //   avgGrade: [length === 0 ? 0 : { avg }]
-  // });
-  // }
+  getAverageGrades(grades) {
+    const gradesArr = [];
+    grades.map(x => {
+      gradesArr.push(x.grade);
+    });
+    const avg = gradesArr.reduce((acc, cur) => {
+      return acc + cur;
+    });
+    this.setState({
+      avgGrade: Math.round(avg / gradesArr.length)
+    });
+  }
 
   render() {
     return (
