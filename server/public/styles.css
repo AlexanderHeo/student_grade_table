@@ -3,7 +3,7 @@ body {
   display: flex;
 }
 .sgt {
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 .gradetableContainer {
   display: flex;
@@ -52,6 +52,9 @@ thead tr, tbody tr:nth-child(even) {
 tbody tr:nth-child(odd) {
   background-color: rgb(231, 231, 231);
 }
+td:nth-child(3) {
+  text-align: center;
+}
 label {
   margin: 10px 10px;
   width: 7%;
@@ -72,6 +75,7 @@ label {
 .buttonContainer {
   margin-right: 10px;
   float: right;
+  display: flex;
 }
 input {
   border-radius: 10px;
@@ -79,8 +83,9 @@ input {
   padding-left: 10px;
   font-size: 16px;
 }
-button {
+.gradeFormButton {
+  width: 85px;
+  height: 42px;
   border-radius: 6px;
   margin-left: 15px;
-  padding: 10px 18px;
 }
