@@ -4,31 +4,31 @@
     "id": 5,
     "name": "Daft Punk",
     "course": "Electronica",
-    "grade": 100
+    "grade": 90
   },
   {
     "id": 12,
     "name": "Iron Maiden",
     "course": "Heavy Metal",
-    "grade": 100
+    "grade": 92
   },
   {
     "id": 32,
     "name": "Led Zeppelin",
     "course": "Classic Rock",
-    "grade": 100
+    "grade": 97
   },
   {
     "id": 48,
     "name": "Muse",
     "course": "Progressive Art Rock",
-    "grade": 100
+    "grade": 90
   },
   {
     "id": 61,
     "name": "Stone Roses",
     "course": "Neo-psychedelic Indie Rock",
-    "grade": 100
+    "grade": 88
   }
   ]
 }

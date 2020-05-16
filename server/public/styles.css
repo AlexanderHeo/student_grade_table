@@ -10,9 +10,24 @@ body {
 .header {
   width: 1000px;
 }
+
 .header {
   margin: 25px 0;
+  display: flex;
+  justify-content: space-between
 }
+.avgGradeMain {
+  margin: auto 0;
+}
+.avgGradeContainer {
+  display: flex;
+  float: right;
+}
+.avgGradeLabel,
+.gradeBox {
+  margin: auto 10px;
+}
+
 table {
   width: 1000px;
   border-collapse: separate;
