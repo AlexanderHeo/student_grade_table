@@ -1,4 +1,5 @@
 import React from 'react';
+import Gradeform from './gradeform';
 import Gradetable from './gradetable';
 import Header from './header';
 
@@ -44,7 +45,10 @@ class App extends React.Component {
     return (
       <div className="sgt">
         <Header avgGrade={ this.state.avgGrade }/>
-        <Gradetable grades={ this.state.grades }/>
+        <div className="gradetableContainer">
+          <Gradetable grades={ this.state.grades }/>
+          <Gradeform />
+        </div>
       </div>
     );
   }
