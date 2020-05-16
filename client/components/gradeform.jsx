@@ -6,7 +6,7 @@ class Gradeform extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      validEntry: '',
+      id: '',
       name: '',
       course: '',
       grade: ''
@@ -20,27 +20,28 @@ class Gradeform extends React.Component {
     const target = event.target;
     const name = target.name;
     const value = target.value;
-    if (!value) {
-      this.setState({
-        validEntry: false
-      });
-    } else {
-      this.setState({
-        [name]: value
-      });
-    }
+
+    // const currentGrades = this.props.grades;
+    // const currentId = currentGrades[currentGrades.length - 1].id;
+    // const nextId = (Math.round(Math.random() * 10)) + parseInt(currentId);
+    this.setState({
+      [name]: value
+      // id: nextId
+    });
   }
 
   handleSubmit(event) {
     event.preventDefault();
     const parsedIntGrade = parseInt(this.state.grade);
     const newStudent = {
+      id: this.state.id,
       name: this.state.name,
       course: this.state.course,
       grade: parsedIntGrade
     };
     this.props.onSubmit(newStudent);
     this.setState({
+      id: '',
       name: '',
       course: '',
       grade: ''
@@ -53,6 +54,11 @@ class Gradeform extends React.Component {
       course: '',
       grade: ''
     });
+  }
+
+  incrementId(currentId) {
+    const nextId = (Math.floor(Math.random() * 10)) + currentId;
+    this.setState({ id: nextId });
   }
 
   render() {
@@ -68,7 +74,8 @@ class Gradeform extends React.Component {
               placeholder="name"
               name="name"
               value={ this.state.name }
-              onChange={ this.handleChange }/>
+              onChange={ this.handleChange }
+            />
           </div>
           <div className="form-section">
             <label htmlFor="course">
