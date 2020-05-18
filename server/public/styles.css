@@ -3,16 +3,19 @@ body {
   display: flex;
 }
 .sgt {
-  margin: 40px 40px;
-  /* border: 1px dotted orange; */
+  /* border: 1px solid black; */
 }
-.gradetable,
+.gradetableContainer {
+  display: flex;
+}
+.gradetable {
+  width: 70%;
+  display: flex;
+}
 .header {
   width: 1000px;
 }
-
 .header {
-  margin: 25px 0;
   display: flex;
   justify-content: space-between
 }
@@ -29,11 +32,11 @@ body {
 }
 
 table {
-  width: 1000px;
+  width: 100%;
   border-collapse: separate;
 }
 td, th {
-  border: 1px solid rgb(100, 100, 145);
+  border-radius: 10px;
   text-align: left;
   padding: 8px;
   margin: 2px;
@@ -43,6 +46,46 @@ th {
   text-align: center;
   font-size: 24px;
 }
-thead tr, tr:nth-child(even) {
+thead tr, tbody tr:nth-child(even) {
   background-color: rgb(188, 213, 238);
+}
+tbody tr:nth-child(odd) {
+  background-color: rgb(231, 231, 231);
+}
+td:nth-child(3) {
+  text-align: center;
+}
+label {
+  margin: 10px 10px;
+  width: 7%;
+}
+.enter-form {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+}
+.box {
+  border-radius: 10px;
+  margin: auto;
+}
+.form-section {
+  margin: 12px 0;
+  display: flex;
+}
+.buttonContainer {
+  margin-right: 10px;
+  float: right;
+  display: flex;
+}
+input {
+  border-radius: 10px;
+  width: 95%;
+  padding-left: 10px;
+  font-size: 16px;
+}
+.gradeFormButton {
+  width: 85px;
+  height: 42px;
+  border-radius: 6px;
+  margin-left: 15px;
 }
