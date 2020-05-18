@@ -2,9 +2,6 @@ body {
   margin: 0;
   display: flex;
 }
-.sgt {
-  /* border: 1px solid black; */
-}
 .gradetableContainer {
   display: flex;
 }
@@ -88,4 +85,19 @@ input {
   height: 42px;
   border-radius: 6px;
   margin-left: 15px;
+}
+.addButton {
+  background-color: green;
+  color: white;
+}
+.operation {
+  display: flex;
+}
+.deleteButton {
+  background-color: red;
+  color: white;
+  width: 70px;
+  height: 30px;
+  border-radius: 10px;
+  margin: auto;
 }
