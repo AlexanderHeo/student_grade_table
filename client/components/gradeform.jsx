@@ -39,7 +39,6 @@ class Gradeform extends React.Component {
       course: this.state.course,
       grade: parsedIntGrade
     };
-    // this.props.onSubmit(newStudent);
     this.setState({
       id: '',
       name: '',
@@ -101,7 +100,7 @@ class Gradeform extends React.Component {
               <input
                 type="submit"
                 value="Add"
-                className="gradeFormButton"
+                className="gradeFormButton addButton"
               />
               <input
                 type="reset"

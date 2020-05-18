@@ -1,33 +1,27 @@
 {
   "grades": [
     {
-      "id": 5,
+      "id": 61,
+      "name": "Stone Roses",
+      "course": "Neo-psychedelic Indie Rock",
+      "grade": 90
+    },
+    {
+      "id": 62,
       "name": "Daft Punk",
       "course": "Electronica",
       "grade": 90
     },
     {
-      "id": 12,
+      "id": 71,
       "name": "Iron Maiden",
       "course": "Heavy Metal",
       "grade": 90
     },
     {
-      "id": 32,
-      "name": "Led Zeppelin",
-      "course": "Classic Rock",
-      "grade": 90
-    },
-    {
-      "id": 48,
+      "id": 79,
       "name": "Muse",
       "course": "Progressive Art Rock",
-      "grade": 90
-    },
-    {
-      "id": 61,
-      "name": "Stone Roses",
-      "course": "Neo-psychedelic Indie Rock",
       "grade": 90
     }
   ]
