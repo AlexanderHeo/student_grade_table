@@ -30,7 +30,12 @@ class Gradetable extends React.Component {
               {
                 grades.map(x => {
                   return (
-                    <Grade student={ x } key={ x.id }/>
+                    <Grade
+                      key={ x.id }
+                      name={ x.name }
+                      course={ x.course }
+                      grade= { x.grade }
+                    />
                   );
                 })
               }

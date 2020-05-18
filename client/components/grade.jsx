@@ -1,16 +1,18 @@
 import React from 'react';
 
 function Grade(props) {
-  const student = props.student;
+  const name = props.name;
+  const course = props.course;
+  const grade = props.grade;
   return (
-    !student.name
+    !name
       ? <tr>
-        <td></td>
+        <td>No student data available</td>
       </tr>
       : <tr>
-        <td>{ student.name }</td>
-        <td>{ student.course }</td>
-        <td>{ student.grade }</td>
+        <td>{ name }</td>
+        <td>{ course }</td>
+        <td>{ grade }</td>
       </tr>
   );
 }

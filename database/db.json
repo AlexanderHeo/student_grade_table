@@ -1,7 +1,4 @@
 {
-  "nextId": {
-    "next": 66
-  },
   "grades": [
     {
       "id": 5,
@@ -13,13 +10,13 @@
       "id": 12,
       "name": "Iron Maiden",
       "course": "Heavy Metal",
-      "grade": 92
+      "grade": 90
     },
     {
       "id": 32,
       "name": "Led Zeppelin",
       "course": "Classic Rock",
-      "grade": 97
+      "grade": 90
     },
     {
       "id": 48,
@@ -31,91 +28,7 @@
       "id": 61,
       "name": "Stone Roses",
       "course": "Neo-psychedelic Indie Rock",
-      "grade": 88
-    },
-    {
-      "name": "Ahsoka Tano",
-      "course": "Jedi Padawan",
-      "grade": 100,
-      "id": 62
-    },
-    {
-      "name": "Ahsoka Tano",
-      "course": "Jedi Padawan",
-      "grade": 100,
-      "id": 63
-    },
-    {
-      "id": 64,
-      "name": "Ahsoka Tano",
-      "course": "Jedi Padawan",
-      "grade": 100
-    },
-    {
-      "id": 65,
-      "name": "Ahsoka Tano",
-      "course": "Jedi Padawan",
-      "grade": 100
-    },
-    {
-      "id": 74,
-      "name": "Ahsoka Tano",
-      "course": "Jedi Padawan",
-      "grade": 100
-    },
-    {
-      "id": 77,
-      "name": "Ahsoka Tano",
-      "course": "Jedi Padawan",
-      "grade": 100
-    },
-    {
-      "id": 83,
-      "name": "Ahsoka Tano",
-      "course": "Jedi Padawan",
-      "grade": 100
-    },
-    {
-      "id": 93,
-      "name": "Ahsoka Tano",
-      "course": "Jedi Padawan",
-      "grade": 100
-    },
-    {
-      "id": 101,
-      "name": "Ahsoka Tano",
-      "course": "Jedi Padawan",
-      "grade": 100
-    },
-    {
-      "id": 108,
-      "name": "Ahsoka Tano",
-      "course": "Jedi Padawan",
-      "grade": 100
-    },
-    {
-      "id": 110,
-      "name": "Ahsoka Tano",
-      "course": "Jedi Padawan",
-      "grade": 100
-    },
-    {
-      "id": 111,
-      "name": "Ahsoka Tano",
-      "course": "Jedi Padawan",
-      "grade": 100
-    },
-    {
-      "id": 112,
-      "name": "Ahsoka Tano",
-      "course": "Jedi Padawan",
-      "grade": 100
-    },
-    {
-      "id": 113,
-      "name": "Ahsoka Tano",
-      "course": "Jedi Padawan",
-      "grade": 100
+      "grade": 90
     }
   ]
 }

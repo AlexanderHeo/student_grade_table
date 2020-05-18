@@ -21,12 +21,12 @@ class Gradeform extends React.Component {
     const name = target.name;
     const value = target.value;
 
-    // const currentGrades = this.props.grades;
-    // const currentId = currentGrades[currentGrades.length - 1].id;
-    // const nextId = (Math.round(Math.random() * 10)) + parseInt(currentId);
+    const currentGrades = this.props.grades;
+    const currentId = currentGrades[currentGrades.length - 1].id;
+    const nextId = (Math.round(Math.random() * 10)) + parseInt(currentId);
     this.setState({
-      [name]: value
-      // id: nextId
+      [name]: value,
+      id: nextId
     });
   }
 
@@ -39,13 +39,13 @@ class Gradeform extends React.Component {
       course: this.state.course,
       grade: parsedIntGrade
     };
-    this.props.onSubmit(newStudent);
+    // this.props.onSubmit(newStudent);
     this.setState({
       id: '',
       name: '',
       course: '',
       grade: ''
-    });
+    }, () => this.props.onSubmit(newStudent));
   }
 
   handleReset() {
@@ -54,11 +54,6 @@ class Gradeform extends React.Component {
       course: '',
       grade: ''
     });
-  }
-
-  incrementId(currentId) {
-    const nextId = (Math.floor(Math.random() * 10)) + currentId;
-    this.setState({ id: nextId });
   }
 
   render() {
@@ -81,18 +76,38 @@ class Gradeform extends React.Component {
             <label htmlFor="course">
               <FontAwesomeIcon icon={ faBook } size='lg' />
             </label>
-            <input type="text"placeholder="course" name="course" value={ this.state.course } onChange={ this.handleChange }/>
+            <input
+              type="text"
+              placeholder="course"
+              name="course"
+              value={ this.state.course }
+              onChange={ this.handleChange }
+            />
           </div>
           <div className="form-section">
             <label htmlFor="grade">
               <FontAwesomeIcon icon={ faEdit } size='lg' />
             </label>
-            <input type="number" placeholder="grade" name="grade" value={ this.state.grade } onChange={ this.handleChange }/>
+            <input
+              type="number"
+              placeholder="grade"
+              name="grade"
+              value={ this.state.grade }
+              onChange={ this.handleChange }
+            />
           </div>
           <div>
             <div className="buttonContainer">
-              <input type="submit" value="Add" className="gradeFormButton"/>
-              <input type="reset" value="Cancel" className="gradeFormButton"/>
+              <input
+                type="submit"
+                value="Add"
+                className="gradeFormButton"
+              />
+              <input
+                type="reset"
+                value="Cancel"
+                className="gradeFormButton"
+              />
             </div>
           </div>
         </form>

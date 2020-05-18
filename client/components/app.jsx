@@ -42,17 +42,21 @@ class App extends React.Component {
     });
   }
 
-  addNewGrade(props) {
+  addNewGrade(newStudent) {
     fetch('/api/grades', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(props)
+      body: JSON.stringify(newStudent)
     })
+      .then(response => {
+        return response.json();
+      })
       .then(jsonData => {
         const gradesCopy = [...this.state.grades];
         const addedNewStudent = gradesCopy.concat(jsonData);
+        this.getAverageGrades(addedNewStudent);
         this.setState({
           grades: addedNewStudent
         });
@@ -60,13 +64,14 @@ class App extends React.Component {
   }
 
   render() {
-    // console.log(this.state.grades);
     return (
       <div className="sgt">
         <Header avgGrade={ this.state.avgGrade }/>
         <div className="gradetableContainer">
           <Gradetable grades={ this.state.grades }/>
-          <Gradeform grades={ this.state.grades } onSubmit={ this.addNewGrade }/>
+          <Gradeform
+            grades={ this.state.grades }
+            onSubmit={ this.addNewGrade }/>
         </div>
       </div>
     );
