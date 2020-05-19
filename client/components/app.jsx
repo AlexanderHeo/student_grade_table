@@ -127,7 +127,7 @@ class App extends React.Component {
         this.setState({
           grades: gradesCopy,
           updating: false
-        });
+        }, () => { this.getAverageGrades(gradesCopy); });
       });
   }
 
