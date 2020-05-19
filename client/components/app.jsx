@@ -9,10 +9,13 @@ class App extends React.Component {
     super(props);
     this.state = ({
       grades: [],
-      avgGrade: 0
+      avgGrade: 0,
+      updating: false,
+      studentToUpdate: ''
     });
     this.addNewGrade = this.addNewGrade.bind(this);
     this.deleteGrade = this.deleteGrade.bind(this);
+    this.showModal = this.showModal.bind(this);
   }
 
   componentDidMount() {
@@ -90,6 +93,13 @@ class App extends React.Component {
       });
   }
 
+  showModal(studentToUpdate) {
+    this.setState({
+      updating: true,
+      studentToUpdate: studentToUpdate
+    });
+  }
+
   updateGrade(updateId) {
     // console.log('updateGrade in App:', updateId);
   }
@@ -97,13 +107,18 @@ class App extends React.Component {
   render() {
     return (
       <div className="sgt">
-        <Update />
+        {
+          this.state.updating
+            ? <Update studentToUpgrade={ this.state.studentToUpdate }/>
+            : null
+        }
         <Header avgGrade={ this.state.avgGrade }/>
         <div className="gradetableContainer">
           <Gradetable
             grades={ this.state.grades }
             onSubmit={ this.deleteGrade }
             onUpdate={ this.updateGrade }
+            onClick={ this.showModal }
           />
           <Gradeform
             grades={ this.state.grades }

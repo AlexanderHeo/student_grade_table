@@ -6,9 +6,11 @@ class Update extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      name: '',
       course: '',
       grade: ''
     };
+    this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(event) {
@@ -26,23 +28,31 @@ class Update extends React.Component {
   }
 
   render() {
+    const name = this.props.studentToUpgrade.name;
+    const course = this.props.studentToUpgrade.course;
+    const grade = this.props.studentToUpgrade.grade;
     return (
       <div className="updateModalContainer">
         <div className="updateModal">
           <div className="updateHeader">
             <div className="modalHeader">Update</div>
-            <div className="updateStudentName">Iron Maiden&apos;s</div>
+            <div className="updateStudentName">{name}&apos;s</div>
             <div className="modalHeader">course or grade:</div>
           </div>
           <div className="updateForm">
-            <form action="submit" onSubmit={ this.handleSubmit } onReset={ this.handleReset } className="modalForm">
+            <form
+              action="submit"
+              onSubmit={ this.handleSubmit }
+              onReset={ this.handleReset }
+              className="modalForm"
+            >
               <div className="form-section">
                 <label htmlFor="course">
                   <FontAwesomeIcon icon={ faBook } size="lg" />
                 </label>
                 <input
                   type="text"
-                  placeholder="course"
+                  placeholder={ course }
                   name="course"
                   value={ this.state.course }
                   onChange={ this.handleChange }
@@ -54,7 +64,7 @@ class Update extends React.Component {
                 </label>
                 <input
                   type="number"
-                  placeholder="grade"
+                  placeholder={ grade }
                   name="grade"
                   value={ this.state.grade }
                   onChange={ this.handleChange }
