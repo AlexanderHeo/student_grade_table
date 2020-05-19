@@ -16,6 +16,7 @@ class App extends React.Component {
     this.addNewGrade = this.addNewGrade.bind(this);
     this.deleteGrade = this.deleteGrade.bind(this);
     this.showModal = this.showModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
 
   componentDidMount() {
@@ -100,6 +101,12 @@ class App extends React.Component {
     });
   }
 
+  closeModal() {
+    this.setState({
+      updating: false
+    });
+  }
+
   updateGrade(updateId) {
     // console.log('updateGrade in App:', updateId);
   }
@@ -109,7 +116,10 @@ class App extends React.Component {
       <div className="sgt">
         {
           this.state.updating
-            ? <Update studentToUpgrade={ this.state.studentToUpdate }/>
+            ? <Update
+              studentToUpgrade={ this.state.studentToUpdate }
+              closeModal={ this.closeModal }
+            />
             : null
         }
         <Header avgGrade={ this.state.avgGrade }/>

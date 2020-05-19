@@ -27,6 +27,11 @@ class Update extends React.Component {
 
   }
 
+  handleReset(event) {
+    event.preventDefault();
+    this.props.closeModal();
+  }
+
   render() {
     const name = this.props.studentToUpgrade.name;
     const course = this.props.studentToUpgrade.course;
@@ -74,7 +79,7 @@ class Update extends React.Component {
           </div>
           <div className="updateButtonsContainer">
             <input type="submit" value="Update" className="updateButton"/>
-            <input type="submit" value="Cancel" className="updateButton"/>
+            <input type="submit" onClick={ this.props.closeModal } value="Cancel" className="updateButton"/>
           </div>
         </div>
       </div>
