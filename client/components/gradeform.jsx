@@ -15,7 +15,6 @@ class Gradeform extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleReset = this.handleReset.bind(this);
-    this.validateInput = this.validateInput.bind(this);
   }
 
   handleChange(event) {
@@ -34,18 +33,34 @@ class Gradeform extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     const parsedIntGrade = parseInt(this.state.grade);
-    const newStudent = {
-      id: this.state.id,
-      name: this.state.name,
-      course: this.state.course,
-      grade: parsedIntGrade
-    };
-    this.setState({
-      id: '',
-      name: '',
-      course: '',
-      grade: ''
-    }, () => this.props.onSubmit(newStudent));
+    if (!this.state.name) {
+      this.setState({
+        validInput: 'name'
+      });
+    } else if (!this.state.course) {
+      this.setState({
+        validInput: 'course'
+      });
+    } else if (!this.state.grade) {
+      this.setState({
+        validInput: 'grade'
+      });
+    } else {
+
+      const newStudent = {
+        id: this.state.id,
+        name: this.state.name,
+        course: this.state.course,
+        grade: parsedIntGrade
+      };
+      this.setState({
+        id: '',
+        name: '',
+        course: '',
+        grade: '',
+        validInput: ''
+      }, () => this.props.onSubmit(newStudent));
+    }
   }
 
   handleReset() {
@@ -54,21 +69,6 @@ class Gradeform extends React.Component {
       course: '',
       grade: ''
     });
-  }
-
-  validateInput(event) {
-    const value = event.target.value;
-    const inputElement = event.target;
-    if (!value) {
-      this.setState({
-        validInput: event.target.name
-      });
-      inputElement.focus();
-    } else if (value) {
-      this.setState({
-        validInput: ''
-      });
-    }
   }
 
   render() {
@@ -86,8 +86,6 @@ class Gradeform extends React.Component {
               name="name"
               value={ this.state.name }
               onChange={ this.handleChange }
-              onBlur={ this.validateInput }
-              ref={ name => { this.inputElement = name; }}
             />
           </div>
           <div className="form-section">
@@ -100,8 +98,6 @@ class Gradeform extends React.Component {
               name="course"
               value={ this.state.course }
               onChange={ this.handleChange }
-              onBlur={ this.validateInput }
-              ref={ course => { this.inputElement = course; }}
             />
           </div>
           <div className="form-section">
@@ -114,8 +110,6 @@ class Gradeform extends React.Component {
               name="grade"
               value={ this.state.grade }
               onChange={ this.handleChange }
-              onBlur={ this.validateInput }
-              ref={ grade => { this.inputElement = grade; }}
             />
           </div>
           <div>
