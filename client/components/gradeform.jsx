@@ -26,7 +26,8 @@ class Gradeform extends React.Component {
     const nextId = (Math.round(Math.random() * 10)) + parseInt(currentId);
     this.setState({
       [name]: value,
-      id: nextId
+      id: nextId,
+      validInput: false
     });
   }
 
@@ -114,27 +115,26 @@ class Gradeform extends React.Component {
           <div>
             {
               !validInput
-                ? null
+                ? <div className="buttonContainer">
+                  <div>
+                    <input
+                      type="submit"
+                      value="Add"
+                      className="gradeFormButton addButton"
+                    />
+                    <input
+                      type="reset"
+                      value="Cancel"
+                      className="gradeFormButton"
+                    />
+                  </div>
+                </div>
                 : <div className="validator">
                   <div className="validatorMessage">
                     Please enter { this.state.validInput }
                   </div>
                 </div>
             }
-          </div>
-          <div className="buttonContainer">
-            <div>
-              <input
-                type="submit"
-                value="Add"
-                className="gradeFormButton addButton"
-              />
-              <input
-                type="reset"
-                value="Cancel"
-                className="gradeFormButton"
-              />
-            </div>
           </div>
         </form>
       </div>

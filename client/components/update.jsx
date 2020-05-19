@@ -21,7 +21,8 @@ class Update extends React.Component {
     const name = target.name;
     const value = target.value;
     this.setState({
-      [name]: value
+      [name]: value,
+      validInput: false
     });
   }
 
@@ -30,20 +31,35 @@ class Update extends React.Component {
     let updateCourse = '';
     if (!this.state.course) {
       updateCourse = student.course;
+      const parsedIntGrade = parseInt(this.state.grade);
+      const updatedStudent = {
+        id: this.state.id,
+        name: this.state.name,
+        course: updateCourse,
+        grade: parsedIntGrade
+      };
+      this.setState({
+        course: '',
+        grade: ''
+      }, () => this.props.onSubmit(updatedStudent));
+    } else if (!this.state.grade) {
+      this.setState({
+        validInput: true
+      });
     } else {
       updateCourse = this.state.course;
+      const parsedIntGrade = parseInt(this.state.grade);
+      const updatedStudent = {
+        id: this.state.id,
+        name: this.state.name,
+        course: updateCourse,
+        grade: parsedIntGrade
+      };
+      this.setState({
+        course: '',
+        grade: ''
+      }, () => this.props.onSubmit(updatedStudent));
     }
-    const parsedIntGrade = parseInt(this.state.grade);
-    const updatedStudent = {
-      id: this.state.id,
-      name: this.state.name,
-      course: updateCourse,
-      grade: parsedIntGrade
-    };
-    this.setState({
-      course: '',
-      grade: ''
-    }, () => this.props.onSubmit(updatedStudent));
   }
 
   handleReset(event) {
@@ -101,27 +117,26 @@ class Update extends React.Component {
           <div>
             {
               !validInput
-                ? null
+                ? <div className="updateButtonsContainer">
+                  <input
+                    type="submit"
+                    onClick={event => this.handleSubmit(event, student)}
+                    value="Update"
+                    className="updateButton"
+                  />
+                  <input
+                    type="submit"
+                    onClick={this.props.closeModal}
+                    value="Cancel"
+                    className="updateButton"
+                  />
+                </div>
                 : <div className="validator">
                   <div className="validatorMessage">
-                    Please enter { validInput }
+                    Please enter a grade:
                   </div>
                 </div>
             }
-          </div>
-          <div className="updateButtonsContainer">
-            <input
-              type="submit"
-              onClick={ event => this.handleSubmit(event, student) }
-              value="Update"
-              className="updateButton"
-            />
-            <input
-              type="submit"
-              onClick={ this.props.closeModal }
-              value="Cancel"
-              className="updateButton"
-            />
           </div>
         </div>
       </div>
