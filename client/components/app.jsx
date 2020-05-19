@@ -2,6 +2,7 @@ import React from 'react';
 import Gradeform from './gradeform';
 import Gradetable from './gradetable';
 import Header from './header';
+import Update from './update';
 
 class App extends React.Component {
   constructor(props) {
@@ -31,16 +32,20 @@ class App extends React.Component {
   }
 
   getAverageGrades(grades) {
-    const gradesArr = [];
-    grades.map(x => {
-      gradesArr.push(x.grade);
-    });
-    const avg = gradesArr.reduce((acc, cur) => {
-      return acc + cur;
-    });
-    this.setState({
-      avgGrade: Math.round(avg / gradesArr.length)
-    });
+    if (grades.length === 0) {
+      this.setState({ avgGrade: 'N/A' });
+    } else {
+      const gradesArr = [];
+      grades.map(x => {
+        gradesArr.push(x.grade);
+      });
+      const avg = gradesArr.reduce((acc, cur) => {
+        return acc + cur;
+      });
+      this.setState({
+        avgGrade: Math.round(avg / gradesArr.length)
+      });
+    }
   }
 
   addNewGrade(newStudent) {
@@ -85,14 +90,20 @@ class App extends React.Component {
       });
   }
 
+  updateGrade(updateId) {
+    // console.log('updateGrade in App:', updateId);
+  }
+
   render() {
     return (
       <div className="sgt">
+        <Update />
         <Header avgGrade={ this.state.avgGrade }/>
         <div className="gradetableContainer">
           <Gradetable
             grades={ this.state.grades }
             onSubmit={ this.deleteGrade }
+            onUpdate={ this.updateGrade }
           />
           <Gradeform
             grades={ this.state.grades }

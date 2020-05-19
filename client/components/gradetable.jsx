@@ -35,7 +35,8 @@ function Gradetable(props) {
                     course={ x.course }
                     grade={ x.grade }
                     onSubmit={ props.onSubmit }
-                    deleteId={ x.id }
+                    onUpdate={ props.onUpdate }
+                    studentId={ x.id }
                   />
                 );
               })
