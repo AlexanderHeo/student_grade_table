@@ -70,15 +70,25 @@ label {
   display: flex;
 }
 .buttonContainer {
-  margin-right: 10px;
-  float: right;
   display: flex;
+}
+.buttonContainer div {
+  margin: auto;
 }
 input {
   border-radius: 10px;
   width: 95%;
   padding-left: 10px;
   font-size: 16px;
+}
+.validator {
+  color: red;
+  font-size: 18px;
+  display: flex;
+  margin-bottom: 10px;
+}
+.validatorMessage {
+  margin: auto;
 }
 .gradeFormButton {
   width: 85px;

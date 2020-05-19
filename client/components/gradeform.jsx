@@ -6,6 +6,7 @@ class Gradeform extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      validInput: '',
       id: '',
       name: '',
       course: '',
@@ -14,22 +15,16 @@ class Gradeform extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleReset = this.handleReset.bind(this);
+    this.validateInput = this.validateInput.bind(this);
   }
 
   handleChange(event) {
     const target = event.target;
     const name = target.name;
     const value = target.value;
-    let nextId = '';
     const currentGrades = this.props.grades;
-
-    if (currentGrades.length === 0) {
-      nextId = 1;
-    } else {
-      const currentId = currentGrades[currentGrades.length - 1].id;
-      nextId = (Math.round(Math.random() * 10)) + parseInt(currentId);
-    }
-
+    const currentId = currentGrades[currentGrades.length - 1].id;
+    const nextId = (Math.round(Math.random() * 10)) + parseInt(currentId);
     this.setState({
       [name]: value,
       id: nextId
@@ -61,7 +56,23 @@ class Gradeform extends React.Component {
     });
   }
 
+  validateInput(event) {
+    const value = event.target.value;
+    const inputElement = event.target;
+    if (!value) {
+      this.setState({
+        validInput: event.target.name
+      });
+      inputElement.focus();
+    } else if (value) {
+      this.setState({
+        validInput: ''
+      });
+    }
+  }
+
   render() {
+    const validInput = this.state.validInput;
     return (
       <div className="enter-form">
         <form onSubmit={ this.handleSubmit } onReset={ this.handleReset }>
@@ -75,6 +86,8 @@ class Gradeform extends React.Component {
               name="name"
               value={ this.state.name }
               onChange={ this.handleChange }
+              onBlur={ this.validateInput }
+              ref={ name => { this.inputElement = name; }}
             />
           </div>
           <div className="form-section">
@@ -87,6 +100,8 @@ class Gradeform extends React.Component {
               name="course"
               value={ this.state.course }
               onChange={ this.handleChange }
+              onBlur={ this.validateInput }
+              ref={ course => { this.inputElement = course; }}
             />
           </div>
           <div className="form-section">
@@ -99,10 +114,23 @@ class Gradeform extends React.Component {
               name="grade"
               value={ this.state.grade }
               onChange={ this.handleChange }
+              onBlur={ this.validateInput }
+              ref={ grade => { this.inputElement = grade; }}
             />
           </div>
           <div>
-            <div className="buttonContainer">
+            {
+              !validInput
+                ? null
+                : <div className="validator">
+                  <div className="validatorMessage">
+                    Please enter { this.state.validInput }
+                  </div>
+                </div>
+            }
+          </div>
+          <div className="buttonContainer">
+            <div>
               <input
                 type="submit"
                 value="Add"
