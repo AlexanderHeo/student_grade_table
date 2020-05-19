@@ -6,6 +6,7 @@ class Update extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      validInput: false,
       id: this.props.studentToUpgrade.id,
       name: this.props.studentToUpgrade.name,
       course: this.props.studentToUpgrade.course,
@@ -20,23 +21,45 @@ class Update extends React.Component {
     const name = target.name;
     const value = target.value;
     this.setState({
-      [name]: value
+      [name]: value,
+      validInput: false
     });
   }
 
-  handleSubmit(event) {
+  handleSubmit(event, student) {
     event.preventDefault();
-    const parsedIntGrade = parseInt(this.state.grade);
-    const updatedStudent = {
-      id: this.state.id,
-      name: this.state.name,
-      course: this.state.course,
-      grade: parsedIntGrade
-    };
-    this.setState({
-      course: '',
-      grade: ''
-    }, () => this.props.onSubmit(updatedStudent));
+    let updateCourse = '';
+    if (!this.state.course) {
+      updateCourse = student.course;
+      const parsedIntGrade = parseInt(this.state.grade);
+      const updatedStudent = {
+        id: this.state.id,
+        name: this.state.name,
+        course: updateCourse,
+        grade: parsedIntGrade
+      };
+      this.setState({
+        course: '',
+        grade: ''
+      }, () => this.props.onSubmit(updatedStudent));
+    } else if (!this.state.grade) {
+      this.setState({
+        validInput: true
+      });
+    } else {
+      updateCourse = this.state.course;
+      const parsedIntGrade = parseInt(this.state.grade);
+      const updatedStudent = {
+        id: this.state.id,
+        name: this.state.name,
+        course: updateCourse,
+        grade: parsedIntGrade
+      };
+      this.setState({
+        course: '',
+        grade: ''
+      }, () => this.props.onSubmit(updatedStudent));
+    }
   }
 
   handleReset(event) {
@@ -45,9 +68,11 @@ class Update extends React.Component {
   }
 
   render() {
+    const student = this.props.studentToUpgrade;
     const name = this.props.studentToUpgrade.name;
     const course = this.props.studentToUpgrade.course;
     const grade = this.props.studentToUpgrade.grade;
+    const validInput = this.state.validInput;
     return (
       <div className="updateModalContainer">
         <div className="updateModal">
@@ -89,19 +114,29 @@ class Update extends React.Component {
               </div>
             </form>
           </div>
-          <div className="updateButtonsContainer">
-            <input
-              type="submit"
-              onClick={ this.handleSubmit }
-              value="Update"
-              className="updateButton"
-            />
-            <input
-              type="submit"
-              onClick={ this.props.closeModal }
-              value="Cancel"
-              className="updateButton"
-            />
+          <div>
+            {
+              !validInput
+                ? <div className="updateButtonsContainer">
+                  <input
+                    type="submit"
+                    onClick={event => this.handleSubmit(event, student)}
+                    value="Update"
+                    className="updateButton"
+                  />
+                  <input
+                    type="submit"
+                    onClick={this.props.closeModal}
+                    value="Cancel"
+                    className="updateButton"
+                  />
+                </div>
+                : <div className="validator">
+                  <div className="validatorMessage">
+                    Please enter a grade:
+                  </div>
+                </div>
+            }
           </div>
         </div>
       </div>

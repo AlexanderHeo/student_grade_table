@@ -91,7 +91,7 @@ class App extends React.Component {
         gradesCopy.splice(index, 1);
         this.setState({
           grades: gradesCopy
-        });
+        }, () => { this.getAverageGrades(gradesCopy); });
       });
   }
 
@@ -127,7 +127,7 @@ class App extends React.Component {
         this.setState({
           grades: gradesCopy,
           updating: false
-        });
+        }, () => { this.getAverageGrades(gradesCopy); });
       });
   }
 

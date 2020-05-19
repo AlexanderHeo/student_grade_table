@@ -6,6 +6,7 @@ class Gradeform extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      validInput: '',
       id: '',
       name: '',
       course: '',
@@ -20,37 +21,46 @@ class Gradeform extends React.Component {
     const target = event.target;
     const name = target.name;
     const value = target.value;
-    let nextId = '';
     const currentGrades = this.props.grades;
-
-    if (currentGrades.length === 0) {
-      nextId = 1;
-    } else {
-      const currentId = currentGrades[currentGrades.length - 1].id;
-      nextId = (Math.round(Math.random() * 10)) + parseInt(currentId);
-    }
-
+    const currentId = currentGrades[currentGrades.length - 1].id;
+    const nextId = (Math.round(Math.random() * 10)) + parseInt(currentId);
     this.setState({
       [name]: value,
-      id: nextId
+      id: nextId,
+      validInput: false
     });
   }
 
   handleSubmit(event) {
     event.preventDefault();
     const parsedIntGrade = parseInt(this.state.grade);
-    const newStudent = {
-      id: this.state.id,
-      name: this.state.name,
-      course: this.state.course,
-      grade: parsedIntGrade
-    };
-    this.setState({
-      id: '',
-      name: '',
-      course: '',
-      grade: ''
-    }, () => this.props.onSubmit(newStudent));
+    if (!this.state.name) {
+      this.setState({
+        validInput: 'name'
+      });
+    } else if (!this.state.course) {
+      this.setState({
+        validInput: 'course'
+      });
+    } else if (!this.state.grade) {
+      this.setState({
+        validInput: 'grade'
+      });
+    } else {
+      const newStudent = {
+        id: this.state.id,
+        name: this.state.name,
+        course: this.state.course,
+        grade: parsedIntGrade
+      };
+      this.setState({
+        id: '',
+        name: '',
+        course: '',
+        grade: '',
+        validInput: ''
+      }, () => this.props.onSubmit(newStudent));
+    }
   }
 
   handleReset() {
@@ -62,6 +72,7 @@ class Gradeform extends React.Component {
   }
 
   render() {
+    const validInput = this.state.validInput;
     return (
       <div className="enter-form">
         <form onSubmit={ this.handleSubmit } onReset={ this.handleReset }>
@@ -102,18 +113,28 @@ class Gradeform extends React.Component {
             />
           </div>
           <div>
-            <div className="buttonContainer">
-              <input
-                type="submit"
-                value="Add"
-                className="gradeFormButton addButton"
-              />
-              <input
-                type="reset"
-                value="Cancel"
-                className="gradeFormButton"
-              />
-            </div>
+            {
+              !validInput
+                ? <div className="buttonContainer">
+                  <div>
+                    <input
+                      type="submit"
+                      value="Add"
+                      className="gradeFormButton addButton"
+                    />
+                    <input
+                      type="reset"
+                      value="Cancel"
+                      className="gradeFormButton"
+                    />
+                  </div>
+                </div>
+                : <div className="validator">
+                  <div className="validatorMessage">
+                    Please enter { this.state.validInput }
+                  </div>
+                </div>
+            }
           </div>
         </form>
       </div>
