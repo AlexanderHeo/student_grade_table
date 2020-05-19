@@ -11,7 +11,6 @@ class Grade extends React.Component {
     if (name === 'delete') {
       this.props.onSubmit(studentInfo);
     } else if (name === 'update') {
-      this.props.onUpdate(studentInfo);
       this.props.onClick(studentInfo);
     }
   }
@@ -21,7 +20,7 @@ class Grade extends React.Component {
     const name = this.props.name;
     const course = this.props.course;
     const grade = this.props.grade;
-    const studentId = this.props.studentId;
+    const studentId = this.props.id;
     return (
       !name
         ? <tr>

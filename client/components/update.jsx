@@ -6,11 +6,13 @@ class Update extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
-      course: '',
-      grade: ''
+      id: this.props.studentToUpgrade.id,
+      name: this.props.studentToUpgrade.name,
+      course: this.props.studentToUpgrade.course,
+      grade: this.props.studentToUpgrade.grade
     };
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
@@ -24,7 +26,17 @@ class Update extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-
+    const parsedIntGrade = parseInt(this.state.grade);
+    const updatedStudent = {
+      id: this.state.id,
+      name: this.state.name,
+      course: this.state.course,
+      grade: parsedIntGrade
+    };
+    this.setState({
+      course: '',
+      grade: ''
+    }, () => this.props.onSubmit(updatedStudent));
   }
 
   handleReset(event) {
@@ -78,8 +90,18 @@ class Update extends React.Component {
             </form>
           </div>
           <div className="updateButtonsContainer">
-            <input type="submit" value="Update" className="updateButton"/>
-            <input type="submit" onClick={ this.props.closeModal } value="Cancel" className="updateButton"/>
+            <input
+              type="submit"
+              onClick={ this.handleSubmit }
+              value="Update"
+              className="updateButton"
+            />
+            <input
+              type="submit"
+              onClick={ this.props.closeModal }
+              value="Cancel"
+              className="updateButton"
+            />
           </div>
         </div>
       </div>

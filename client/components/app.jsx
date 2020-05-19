@@ -11,12 +11,13 @@ class App extends React.Component {
       grades: [],
       avgGrade: 0,
       updating: false,
-      studentToUpdate: ''
+      studentToUpdate: {}
     });
     this.addNewGrade = this.addNewGrade.bind(this);
     this.deleteGrade = this.deleteGrade.bind(this);
     this.showModal = this.showModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
+    this.updateGrade = this.updateGrade.bind(this);
   }
 
   componentDidMount() {
@@ -107,8 +108,27 @@ class App extends React.Component {
     });
   }
 
-  updateGrade(updateId) {
-    // console.log('updateGrade in App:', updateId);
+  updateGrade(updateStudent) {
+    const updateId = updateStudent.id;
+    fetch(`/api/grades/${updateId}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(updateStudent)
+    })
+      .then(response => {
+        return response.json();
+      })
+      .then(jsonData => {
+        const gradesCopy = [...this.state.grades];
+        const index = gradesCopy.findIndex(studentObj => studentObj.id === updateId);
+        gradesCopy.splice(index, 1, jsonData);
+        this.setState({
+          grades: gradesCopy,
+          updating: false
+        });
+      });
   }
 
   render() {
@@ -119,6 +139,8 @@ class App extends React.Component {
             ? <Update
               studentToUpgrade={ this.state.studentToUpdate }
               closeModal={ this.closeModal }
+              onSubmit={ this.updateGrade }
+              onClick={ this.updateGrade }
             />
             : null
         }
@@ -127,7 +149,6 @@ class App extends React.Component {
           <Gradetable
             grades={ this.state.grades }
             onSubmit={ this.deleteGrade }
-            onUpdate={ this.updateGrade }
             onClick={ this.showModal }
           />
           <Gradeform
