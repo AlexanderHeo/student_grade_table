@@ -46,7 +46,6 @@ class Gradeform extends React.Component {
         validInput: 'grade'
       });
     } else {
-
       const newStudent = {
         id: this.state.id,
         name: this.state.name,
