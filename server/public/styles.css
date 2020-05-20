@@ -189,7 +189,7 @@ input {
   }
   form {
     width: 475px;
-    margin: auto;
+    margin: 0 auto;
   }
 }
 @media only screen and (min-width: 768px) {
@@ -203,8 +203,8 @@ input {
     font-size: 1.2rem;
   }
   form {
-    width: %;
-    margin: auto;
+    width: 475px;
+    margin: 0 auto;
   }
 }
 @media only screen and (min-width: 992px) {
