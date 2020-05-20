@@ -24,11 +24,6 @@ The Student Grade Table is a dynamic web application for teachers who want to re
 * User can delete existing grade
 * User can modify existing grade
 
-# NPM Scripts
-
-- `dev` - Start Webpack Dev Server on port `3000` and JSON Server on port `3001`. (Go to `http://localhost:3000`)
-- `build` - Run Webpack to build the React client into `server/public`. (Usually only run during deployment)
-
 # Preview
 
 ![SGT React](sgt-react.gif)
@@ -38,7 +33,7 @@ The Student Grade Table is a dynamic web application for teachers who want to re
 * Node.js 10 or high
 * npm 6 or higher
 
-# Getting Started
+## Getting Started
 1. Clone the respository.
 ```
 git clonse https://github.com/AlexanderHeo/student_grade_table.git
