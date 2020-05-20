@@ -120,11 +120,11 @@ input {
   display: flex;
   align-items: center;
   justify-content: center;
-
+  z-index: 2;
 }
 .updateModal {
-  width: 270px;
-  height: 315px;
+  width: 375px;
+  height: 415px;
   border: 1px solid rgb(146, 165, 184);
   border-radius: 20px;
   background-color: rgb(188, 213, 238);
@@ -188,7 +188,7 @@ input {
     font-size: 1rem;
   }
   form {
-    width: 475px;
+    width: 275px;
     margin: 0 auto;
   }
 }
@@ -203,7 +203,7 @@ input {
     font-size: 1.2rem;
   }
   form {
-    width: 475px;
+    width: 275px;
     margin: 0 auto;
   }
 }
