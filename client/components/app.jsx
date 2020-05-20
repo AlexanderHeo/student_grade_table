@@ -140,19 +140,23 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="sgt">
-        {
-          this.state.updating
-            ? <Update
-              studentToUpgrade={ this.state.studentToUpdate }
-              closeModal={ this.closeModal }
-              onSubmit={ this.updateGrade }
-              onClick={ this.updateGrade }
-            />
-            : null
-        }
-        <Header avgGrade={ this.state.avgGrade }/>
-        <div className="gradetableContainer">
+      <div className="container-fluid">
+        <div className="row">
+          {
+            this.state.updating
+              ? <Update
+                studentToUpgrade={ this.state.studentToUpdate }
+                closeModal={ this.closeModal }
+                onSubmit={ this.updateGrade }
+                onClick={ this.updateGrade }
+              />
+              : null
+          }
+        </div>
+        <div className="row header">
+          <Header avgGrade={ this.state.avgGrade }/>
+        </div>
+        <div className="row gradetableform">
           <Gradetable
             grades={ this.state.grades }
             onSubmit={ this.deleteGrade }
@@ -160,7 +164,8 @@ class App extends React.Component {
           />
           <Gradeform
             grades={ this.state.grades }
-            onSubmit={ this.addNewGrade }/>
+            onSubmit={ this.addNewGrade }
+          />
         </div>
       </div>
     );

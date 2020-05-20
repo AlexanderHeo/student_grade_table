@@ -5,7 +5,7 @@ function Gradetable(props) {
   const grades = props.grades;
   if (grades.length === 0) {
     return (
-      <table>
+      <table className="col-8">
         <tbody>
           <tr>
             <td>No Student Grades Recorded</td>
@@ -15,17 +15,17 @@ function Gradetable(props) {
     );
   } else {
     return (
-      <div className="gradetable">
-        <table>
-          <thead>
-            <tr>
+      <div className="col-lg-8 col-md-12 col-sm-12 gradetable">
+        <table className="">
+          <thead className="col-12">
+            <tr className="">
               <th>Student Name</th>
               <th>Course</th>
               <th>Grade</th>
               <th>Operations</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="col-12">
             {
               grades.map(x => {
                 return (

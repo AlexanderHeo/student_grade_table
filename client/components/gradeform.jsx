@@ -79,7 +79,7 @@ class Gradeform extends React.Component {
   render() {
     const validInput = this.state.validInput;
     return (
-      <div className="enter-form">
+      <div className="col-lg-4 col-md-12 col-sm-12 enter-form">
         <form onSubmit={ this.handleSubmit } onReset={ this.handleReset }>
           <div className="form-section">
             <label htmlFor="name">
