@@ -2,32 +2,22 @@ body {
   margin: 0;
   display: flex;
 }
-.gradetableContainer {
-  display: flex;
-}
-.gradetable {
-  width: 70%;
-  display: flex;
+#root {
+  width: 1350px;
 }
 .header {
-  width: 1000px;
+  margin: 12px 0;
+  padding: 0 15px;
 }
-.header {
-  display: flex;
-  justify-content: space-between
-}
-.avgGradeMain {
-  margin: auto 0;
-}
-.avgGradeContainer {
-  display: flex;
-  float: right;
-}
-.avgGradeLabel,
 .gradeBox {
-  margin: auto 10px;
+  background-color: black;
+  color: white;
+  text-align: center;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
 table {
   width: 100%;
   border-collapse: separate;
@@ -41,7 +31,10 @@ td, th {
 th {
   padding: 18px 8px;
   text-align: center;
-  font-size: 24px;
+  font-size: 1.4rem;
+}
+td {
+  font-size: 1rem;
 }
 thead tr, tbody tr:nth-child(even) {
   background-color: rgb(188, 213, 238);
@@ -162,4 +155,70 @@ input {
 }
 .updateForm {
   margin-top: 30px;
+}
+@media only screen and (max-width: 575px) {
+  #root {
+    width: 575px;
+  }
+  .header h1 {
+    font-size: 1.2rem;
+  }
+  .header h2 {
+    font-size: 0.9rem;
+  }
+  th {
+    font-size: 1rem;
+  }
+  .operation {
+    flex-direction: column;
+  }
+  form {
+    width: 275px;
+    margin: auto;
+  }
+}
+@media only screen and (min-width: 576px) {
+  .header h1 {
+    font-size: 1.7rem;
+  }
+  .header h2 {
+    font-size: 1.1rem;
+  }
+  th {
+    font-size: 1rem;
+  }
+  form {
+    width: 475px;
+    margin: auto;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .header h1 {
+    font-size: 2rem;
+  }
+  .header h2 {
+    font-size: 1.3rem;
+  }
+  th {
+    font-size: 1.2rem;
+  }
+  form {
+    width: %;
+    margin: auto;
+  }
+}
+@media only screen and (min-width: 992px) {
+
+  .header h1 {
+    font-size: 2.5rem;
+  }
+  .header h2 {
+    font-size: 1.8rem;
+  }
+  th {
+    font-size: 1.3rem;
+  }
+  form {
+    width: 100%;
+  }
 }

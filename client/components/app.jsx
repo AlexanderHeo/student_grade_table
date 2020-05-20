@@ -39,6 +39,8 @@ class App extends React.Component {
   getAverageGrades(grades) {
     if (grades.length === 0) {
       this.setState({ avgGrade: 'N/A' });
+    } else if (grades.length === 1) {
+      this.setState({ avgGrade: grades.grade });
     } else {
       const gradesArr = [];
       grades.map(x => {
@@ -65,8 +67,13 @@ class App extends React.Component {
         return response.json();
       })
       .then(jsonData => {
+        let addedNewStudent = [];
         const gradesCopy = [...this.state.grades];
-        const addedNewStudent = gradesCopy.concat(jsonData);
+        if (gradesCopy.length === 0 || gradesCopy.length === 1) {
+          addedNewStudent.push(jsonData);
+        } else {
+          addedNewStudent = gradesCopy.concat(jsonData);
+        }
         this.getAverageGrades(addedNewStudent);
         this.setState({
           grades: addedNewStudent
@@ -133,19 +140,23 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="sgt">
-        {
-          this.state.updating
-            ? <Update
-              studentToUpgrade={ this.state.studentToUpdate }
-              closeModal={ this.closeModal }
-              onSubmit={ this.updateGrade }
-              onClick={ this.updateGrade }
-            />
-            : null
-        }
-        <Header avgGrade={ this.state.avgGrade }/>
-        <div className="gradetableContainer">
+      <div className="container-fluid">
+        <div className="row">
+          {
+            this.state.updating
+              ? <Update
+                studentToUpgrade={ this.state.studentToUpdate }
+                closeModal={ this.closeModal }
+                onSubmit={ this.updateGrade }
+                onClick={ this.updateGrade }
+              />
+              : null
+          }
+        </div>
+        <div className="row header">
+          <Header avgGrade={ this.state.avgGrade }/>
+        </div>
+        <div className="row gradetableform">
           <Gradetable
             grades={ this.state.grades }
             onSubmit={ this.deleteGrade }
@@ -153,7 +164,8 @@ class App extends React.Component {
           />
           <Gradeform
             grades={ this.state.grades }
-            onSubmit={ this.addNewGrade }/>
+            onSubmit={ this.addNewGrade }
+          />
         </div>
       </div>
     );

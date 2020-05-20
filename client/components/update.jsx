@@ -114,10 +114,10 @@ class Update extends React.Component {
               </div>
             </form>
           </div>
-          <div>
+          <div className="updateButtonsContainer">
             {
               !validInput
-                ? <div className="updateButtonsContainer">
+                ? <div>
                   <input
                     type="submit"
                     onClick={event => this.handleSubmit(event, student)}

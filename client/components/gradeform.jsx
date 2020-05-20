@@ -21,9 +21,14 @@ class Gradeform extends React.Component {
     const target = event.target;
     const name = target.name;
     const value = target.value;
+    let nextId = '';
     const currentGrades = this.props.grades;
-    const currentId = currentGrades[currentGrades.length - 1].id;
-    const nextId = (Math.round(Math.random() * 10)) + parseInt(currentId);
+    if (currentGrades.length === 0) {
+      nextId = 1;
+    } else {
+      const currentId = currentGrades[currentGrades.length - 1].id;
+      nextId = (Math.round(Math.random() * 10)) + parseInt(currentId);
+    }
     this.setState({
       [name]: value,
       id: nextId,
@@ -74,7 +79,7 @@ class Gradeform extends React.Component {
   render() {
     const validInput = this.state.validInput;
     return (
-      <div className="enter-form">
+      <div className="col-lg-4 col-md-12 col-sm-12 enter-form">
         <form onSubmit={ this.handleSubmit } onReset={ this.handleReset }>
           <div className="form-section">
             <label htmlFor="name">
