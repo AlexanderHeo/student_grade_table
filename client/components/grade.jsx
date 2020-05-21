@@ -36,14 +36,14 @@ class Grade extends React.Component {
               name="delete"
               onClick={ event => this.handleClick(studentId, event) }
               value="Delete"
-              className="deleteButton"
+              className="btn btn-danger"
             />
             <input
               type="submit"
               name="update"
               onClick={ event => this.handleClick(student, event) }
               value="Update"
-              className="updateButton"
+              className="btn btn-success"
             />
           </td>
         </tr>

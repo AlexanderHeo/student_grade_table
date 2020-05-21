@@ -74,14 +74,14 @@ class Update extends React.Component {
     const grade = this.props.studentToUpgrade.grade;
     const validInput = this.state.validInput;
     return (
-      <div className="updateModalContainer">
+      <div className="updateModalContainer d-flex">
         <div className="updateModal">
-          <div className="updateHeader">
+          <div className="updateHeader d-flex flex-column">
             <div className="modalHeader">Update</div>
             <div className="updateStudentName">{name}&apos;s</div>
             <div className="modalHeader">course or grade:</div>
           </div>
-          <div className="updateForm">
+          <div className="updateForm mt-4">
             <form
               action="submit"
               onSubmit={ this.handleSubmit }
@@ -114,7 +114,7 @@ class Update extends React.Component {
               </div>
             </form>
           </div>
-          <div className="updateButtonsContainer">
+          <div className="updateButtonsContainer d-flex mt-4">
             {
               !validInput
                 ? <div>
@@ -122,13 +122,13 @@ class Update extends React.Component {
                     type="submit"
                     onClick={event => this.handleSubmit(event, student)}
                     value="Update"
-                    className="updateButton"
+                    className="btn btn-success"
                   />
                   <input
                     type="submit"
                     onClick={this.props.closeModal}
                     value="Cancel"
-                    className="updateButton"
+                    className="btn btn-secondary"
                   />
                 </div>
                 : <div className="validator">

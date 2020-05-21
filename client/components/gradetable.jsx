@@ -25,7 +25,7 @@ function Gradetable(props) {
               <th>Operations</th>
             </tr>
           </thead>
-          <tbody className="col-12">
+          <tbody className="">
             {
               grades.map(x => {
                 return (

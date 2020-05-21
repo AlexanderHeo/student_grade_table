@@ -1,40 +1,28 @@
 {
   "grades": [
     {
-      "id": 65,
+      "id": 1,
       "name": "Ahsoka Tano",
-      "course": "Jedi Padawan",
+      "course": "Best Ever",
       "grade": 100
     },
     {
-      "id": 70,
+      "id": 7,
+      "name": "Obi Wan Kenobi",
+      "course": "Hello There",
+      "grade": 99
+    },
+    {
+      "id": 12,
+      "name": "Commander Cody",
+      "course": "Blasting Clankers",
+      "grade": 90
+    },
+    {
+      "id": 13,
       "name": "Anakin Skywalker",
       "course": "Jedi Knight",
-      "grade": 100
-    },
-    {
-      "id": 74,
-      "name": "Obi Wan Kenobi",
-      "course": "Jedi Master",
-      "grade": 100
-    },
-    {
-      "id": 81,
-      "name": "Ahsoka Tano",
-      "course": "Jedi Padawan",
-      "grade": 100
-    },
-    {
-      "id": 90,
-      "name": "Ahsoka Tano",
-      "course": "Jedi Padawan",
-      "grade": 100
-    },
-    {
-      "id": 96,
-      "name": "Ahsoka Tano",
-      "course": "Jedi Padawan",
-      "grade": 100
+      "grade": 95
     }
   ]
 }
