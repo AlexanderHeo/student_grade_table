@@ -40,7 +40,7 @@ class App extends React.Component {
     if (grades.length === 0) {
       this.setState({ avgGrade: 'N/A' });
     } else if (grades.length === 1) {
-      this.setState({ avgGrade: grades.grade });
+      this.setState({ avgGrade: grades[0].grade });
     } else {
       const gradesArr = [];
       grades.map(x => {
@@ -69,7 +69,7 @@ class App extends React.Component {
       .then(jsonData => {
         let addedNewStudent = [];
         const gradesCopy = [...this.state.grades];
-        if (gradesCopy.length === 0 || gradesCopy.length === 1) {
+        if (gradesCopy.length === 0) {
           addedNewStudent.push(jsonData);
         } else {
           addedNewStudent = gradesCopy.concat(jsonData);

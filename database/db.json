@@ -1,28 +1,3 @@
 {
-  "grades": [
-    {
-      "id": 1,
-      "name": "Ahsoka Tano",
-      "course": "Best Ever",
-      "grade": 100
-    },
-    {
-      "id": 7,
-      "name": "Obi Wan Kenobi",
-      "course": "Hello There",
-      "grade": 99
-    },
-    {
-      "id": 12,
-      "name": "Commander Cody",
-      "course": "Blasting Clankers",
-      "grade": 90
-    },
-    {
-      "id": 13,
-      "name": "Anakin Skywalker",
-      "course": "Jedi Knight",
-      "grade": 95
-    }
-  ]
+  "grades": []
 }
