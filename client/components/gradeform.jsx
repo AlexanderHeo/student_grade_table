@@ -79,7 +79,7 @@ class Gradeform extends React.Component {
   render() {
     const validInput = this.state.validInput;
     return (
-      <div className="col-lg-4 col-md-12 col-sm-12 enter-form">
+      <div className="col-lg-4 col-md-12 col-sm-12">
         <form onSubmit={ this.handleSubmit } onReset={ this.handleReset }>
           <div className="form-section">
             <label htmlFor="name">
@@ -121,18 +121,16 @@ class Gradeform extends React.Component {
             {
               !validInput
                 ? <div className="buttonContainer">
-                  <div>
-                    <input
-                      type="submit"
-                      value="Add"
-                      className="gradeFormButton addButton"
-                    />
-                    <input
-                      type="reset"
-                      value="Cancel"
-                      className="gradeFormButton"
-                    />
-                  </div>
+                  <input
+                    type="submit"
+                    value="Add"
+                    className="btn btn-primary"
+                  />
+                  <input
+                    type="reset"
+                    value="Cancel"
+                    className="btn btn-secondary"
+                  />
                 </div>
                 : <div className="validator">
                   <div className="validatorMessage">

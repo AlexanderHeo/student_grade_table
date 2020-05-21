@@ -1,34 +1,28 @@
 {
   "grades": [
     {
-      "id": 5,
-      "name": "Daft Punk",
-      "course": "Electronica",
-      "grade": 69
+      "id": 1,
+      "name": "Ahsoka Tano",
+      "course": "Best Ever",
+      "grade": 100
+    },
+    {
+      "id": 7,
+      "name": "Obi Wan Kenobi",
+      "course": "Hello There",
+      "grade": 99
     },
     {
       "id": 12,
-      "name": "Iron Maiden",
-      "course": "Heavy Metal",
-      "grade": 75
+      "name": "Commander Cody",
+      "course": "Blasting Clankers",
+      "grade": 90
     },
     {
-      "id": 32,
-      "name": "Led Zeppelin",
-      "course": "Classic Rock",
-      "grade": 77
-    },
-    {
-      "id": 48,
-      "name": "Muse",
-      "course": "Progressive Art Rock",
-      "grade": 81
-    },
-    {
-      "id": 61,
-      "name": "Stone Roses",
-      "course": "Neo-psychedelic Indie Rock",
-      "grade": 73
+      "id": 13,
+      "name": "Anakin Skywalker",
+      "course": "Jedi Knight",
+      "grade": 95
     }
   ]
 }
