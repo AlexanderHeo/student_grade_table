@@ -30,7 +30,7 @@ The Student Grade Table is a dynamic web application for teachers who want to re
 
 # Development
 ## System Requirements
-* Node.js 10 or high
+* Node.js 10 or higher
 * npm 6 or higher
 
 ## Getting Started
@@ -47,4 +47,4 @@ npm install
 ```
 npm run dev
 ```
-4. Open <https://localhost:3000> in your brower
+4. Open <https://localhost:3000> in your browser
