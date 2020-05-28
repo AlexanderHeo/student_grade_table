@@ -6,7 +6,7 @@ The Student Grade Table: Written in React
 
 The Student Grade Table is a dynamic web application for teachers who want to record the grades of their students.
 
-# Technologies Used
+## Technologies Used
 
 * JavaScript
 * React JS
@@ -16,7 +16,7 @@ The Student Grade Table is a dynamic web application for teachers who want to re
 * Bootstrap 4
 * AWS EC2
 
-# Features
+## Features
 
 * User can view all grades already recorded
 * User can view average of all grades
@@ -24,7 +24,7 @@ The Student Grade Table is a dynamic web application for teachers who want to re
 * User can delete existing grade
 * User can modify existing grade
 
-# Preview
+## Preview
 
 ![SGT](sgt-react.gif)
 
