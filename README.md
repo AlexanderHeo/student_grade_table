@@ -26,7 +26,7 @@ The Student Grade Table is a dynamic web application for teachers who want to re
 
 # Preview
 
-![SGT React](sgt-react.gif)
+![SGT](sgt-react.gif)
 
 # Development
 ## System Requirements

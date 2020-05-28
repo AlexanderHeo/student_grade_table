@@ -153,9 +153,7 @@ class App extends React.Component {
               : null
           }
         </div>
-        {/* <div className="row header"> */}
         <Header avgGrade={ this.state.avgGrade }/>
-        {/* </div> */}
         <div className="row gradetableform">
           <Gradetable
             grades={ this.state.grades }
