@@ -16,6 +16,9 @@ SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
+ALTER TABLE public.grades ALTER COLUMN "gradeId" DROP DEFAULT;
+DROP SEQUENCE public."grades_gradeId_seq";
+DROP TABLE public.grades;
 DROP EXTENSION plpgsql;
 DROP SCHEMA public;
 --
@@ -44,6 +47,68 @@ CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 --
 
 COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: grades; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.grades (
+    "gradeId" integer NOT NULL,
+    name text NOT NULL,
+    course text NOT NULL,
+    grade integer NOT NULL,
+    "createdAt" timestamp(6) with time zone DEFAULT now() NOT NULL
+);
+
+
+--
+-- Name: grades_gradeId_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public."grades_gradeId_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: grades_gradeId_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public."grades_gradeId_seq" OWNED BY public.grades."gradeId";
+
+
+--
+-- Name: grades gradeId; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.grades ALTER COLUMN "gradeId" SET DEFAULT nextval('public."grades_gradeId_seq"'::regclass);
+
+
+--
+-- Data for Name: grades; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY public.grades ("gradeId", name, course, grade, "createdAt") FROM stdin;
+1	Simon Peyton Jones	Haskell	100	2020-05-30 19:54:00.772331-07
+2	Barbara Liskov	CLU	100	2020-05-30 19:54:00.772331-07
+3	Rasmus Lerdorf	PHP	100	2020-05-30 19:54:00.772331-07
+\.
+
+
+--
+-- Name: grades_gradeId_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('public."grades_gradeId_seq"', 3, true);
 
 
 --
