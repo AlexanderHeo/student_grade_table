@@ -1,3 +1,18 @@
+// const path = require('path');
+// const jsonServer = require('json-server');
+
+// const dbPath = path.resolve(__dirname, '../database/db.json');
+// const server = jsonServer.create();
+// const middleware = jsonServer.defaults();
+// const endpoints = jsonServer.router(dbPath);
+
+// server.use(middleware);
+// server.use('/api', endpoints);
+// server.listen(3001, () => {
+//   // eslint-disable-next-line no-console
+//   console.log('JSON Server listening on port 3001\n');
+// });
+
 /* eslint-disable no-console */
 const express = require('express');
 const app = express();
@@ -161,6 +176,6 @@ app.delete('/api/grades/:gradeId', (req, res) => {
     });
 });
 
-app.listen(3000, () => {
-  console.log('Listening on port 3K, yo');
+app.listen(3005, () => {
+  console.log('Listening on port 3005 yo');
 });
