@@ -30,7 +30,7 @@ function Gradetable(props) {
               grades.map(x => {
                 return (
                   <Grade
-                    key={ x.id }
+                    key={ x.gradeId }
                     name={ x.name }
                     course={ x.course }
                     grade={ x.grade }
