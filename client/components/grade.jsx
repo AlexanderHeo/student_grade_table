@@ -6,7 +6,7 @@ class Grade extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick(studentInfo, event) {
+  handleClick(event, studentInfo) {
     const name = event.target.name;
     if (name === 'delete') {
       this.props.onSubmit(studentInfo);
@@ -34,14 +34,14 @@ class Grade extends React.Component {
             <input
               type="submit"
               name="delete"
-              onClick={ event => this.handleClick(studentId, event) }
+              onClick={ event => this.handleClick(event, studentId) }
               value="Delete"
               className="btn btn-danger"
             />
             <input
               type="submit"
               name="update"
-              onClick={ event => this.handleClick(student, event) }
+              onClick={ event => this.handleClick(event, student) }
               value="Update"
               className="btn btn-success"
             />

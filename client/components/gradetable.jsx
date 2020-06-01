@@ -35,7 +35,7 @@ function Gradetable(props) {
                     course={ x.course }
                     grade={ x.grade }
                     onSubmit={ props.onSubmit }
-                    id={ x.id }
+                    id={ x.gradeId }
                     onClick={ () => props.onClick(x) }
                   />
                 );

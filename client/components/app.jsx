@@ -82,6 +82,7 @@ class App extends React.Component {
   }
 
   deleteGrade(deleteId) {
+    // console.log('deleteId:', deleteId);
     fetch(`/api/grades/${deleteId}`, {
       method: 'DELETE',
       headers: {
@@ -89,9 +90,7 @@ class App extends React.Component {
       },
       body: JSON.stringify()
     })
-      .then(response => {
-        return response.json();
-      })
+      .then(response => response.json())
       .then(jsonData => {
         const gradesCopy = [...this.state.grades];
         const index = gradesCopy.findIndex(studentObj => studentObj.id === deleteId);
@@ -99,7 +98,9 @@ class App extends React.Component {
         this.setState({
           grades: gradesCopy
         }, () => { this.getAverageGrades(gradesCopy); });
-      });
+        return jsonData;
+      })
+      .catch(err => console.error(err));
   }
 
   showModal(studentToUpdate) {
