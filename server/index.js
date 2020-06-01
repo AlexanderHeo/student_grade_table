@@ -21,7 +21,9 @@ const pg = require('pg');
 const db = new pg.Pool({
   connectionString: 'postgres://dev:lfz@localhost/sgt'
 });
+const staticMiddleware = require('./static-middleware');
 
+app.use(staticMiddleware);
 app.use(express.json());
 
 app.get('/api/grades', (req, res) => {
