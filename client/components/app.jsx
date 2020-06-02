@@ -93,7 +93,7 @@ class App extends React.Component {
       })
       .then(jsonData => {
         const gradesCopy = [...this.state.grades];
-        const index = gradesCopy.findIndex(studentObj => studentObj.id === deleteId);
+        const index = gradesCopy.findIndex(studentObj => studentObj.gradeId === deleteId);
         gradesCopy.splice(index, 1);
         this.setState({
           grades: gradesCopy
