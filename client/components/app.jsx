@@ -82,15 +82,15 @@ class App extends React.Component {
   }
 
   deleteGrade(deleteId) {
-    // console.log('deleteId:', deleteId);
     fetch(`/api/grades/${deleteId}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
-      },
-      body: JSON.stringify()
+      }
     })
-      .then(response => response.json())
+      .then(response => {
+        return null;
+      })
       .then(jsonData => {
         const gradesCopy = [...this.state.grades];
         const index = gradesCopy.findIndex(studentObj => studentObj.id === deleteId);
@@ -117,7 +117,7 @@ class App extends React.Component {
   }
 
   updateGrade(updateStudent) {
-    const updateId = updateStudent.id;
+    const updateId = updateStudent.gradeId;
     fetch(`/api/grades/${updateId}`, {
       method: 'PATCH',
       headers: {
@@ -130,7 +130,9 @@ class App extends React.Component {
       })
       .then(jsonData => {
         const gradesCopy = [...this.state.grades];
-        const index = gradesCopy.findIndex(studentObj => studentObj.id === updateId);
+        const index = gradesCopy.findIndex(studentObj => {
+          return studentObj.gradeId === updateId;
+        });
         gradesCopy.splice(index, 1, jsonData);
         this.setState({
           grades: gradesCopy,

@@ -6,11 +6,11 @@ class Update extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      validInput: false,
-      id: this.props.studentToUpgrade.id,
+      notValidInput: '',
+      id: this.props.studentToUpgrade.gradeId,
       name: this.props.studentToUpgrade.name,
-      course: this.props.studentToUpgrade.course,
-      grade: this.props.studentToUpgrade.grade
+      course: '',
+      grade: ''
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -22,44 +22,64 @@ class Update extends React.Component {
     const value = target.value;
     this.setState({
       [name]: value,
-      validInput: false
+      notValidInput: ''
     });
   }
 
   handleSubmit(event, student) {
     event.preventDefault();
-    let updateCourse = '';
     if (!this.state.course) {
-      updateCourse = student.course;
-      const parsedIntGrade = parseInt(this.state.grade);
-      const updatedStudent = {
-        id: this.state.id,
-        name: this.state.name,
-        course: updateCourse,
-        grade: parsedIntGrade
-      };
       this.setState({
-        course: '',
-        grade: ''
-      }, () => this.props.onSubmit(updatedStudent));
+        notValidInput: 'course'
+      });
     } else if (!this.state.grade) {
       this.setState({
-        validInput: true
+        notValidInput: 'grade'
       });
-    } else {
-      updateCourse = this.state.course;
-      const parsedIntGrade = parseInt(this.state.grade);
+    } else if (this.state.course && this.state.grade) {
       const updatedStudent = {
-        id: this.state.id,
+        gradeId: this.state.id,
         name: this.state.name,
-        course: updateCourse,
-        grade: parsedIntGrade
+        course: this.state.course,
+        grade: parseInt(this.state.grade)
       };
       this.setState({
         course: '',
         grade: ''
       }, () => this.props.onSubmit(updatedStudent));
     }
+
+    // if (!this.state.course && !this.state.grade) {
+    //   updateCourse = this.props.studentToUpgrade.course;
+    //   const parsedIntGrade = parseInt(this.props.studentToUpgrade.grade);
+    //   const updatedStudent = {
+    //     id: this.state.id,
+    //     name: this.state.name,
+    //     course: updateCourse,
+    //     grade: parsedIntGrade
+    //   };
+    //   this.setState({
+    //     course: '',
+    //     grade: ''
+    //   }, () => this.props.onSubmit(updatedStudent));
+    // } else if (this.state.course && !this.state.grade) {
+    //   this.setState({
+    //     notValidInput: true
+    //   });
+    // } else {
+    //   updateCourse = this.props.studentToUpgrade.course;
+    //   const parsedIntGrade = parseInt(this.props.studentToUpgrade.grade);
+    //   const updatedStudent = {
+    //     id: this.state.id,
+    //     name: this.state.name,
+    //     course: updateCourse,
+    //     grade: parsedIntGrade
+    //   };
+    //   this.setState({
+    //     course: '',
+    //     grade: ''
+    //   }, () => this.props.onSubmit(updatedStudent));
+    // }
   }
 
   handleReset(event) {
@@ -72,7 +92,7 @@ class Update extends React.Component {
     const name = this.props.studentToUpgrade.name;
     const course = this.props.studentToUpgrade.course;
     const grade = this.props.studentToUpgrade.grade;
-    const validInput = this.state.validInput;
+    const notValidInput = this.state.notValidInput;
     return (
       <div className="updateModalContainer d-flex">
         <div className="updateModal">
@@ -116,7 +136,7 @@ class Update extends React.Component {
           </div>
           <div className="updateButtonsContainer d-flex mt-4">
             {
-              !validInput
+              !notValidInput
                 ? <div>
                   <input
                     type="submit"
@@ -133,7 +153,7 @@ class Update extends React.Component {
                 </div>
                 : <div className="validator">
                   <div className="validatorMessage">
-                    Please enter a grade:
+                    {`Please enter a ${this.state.notValidInput}:`}
                   </div>
                 </div>
             }
