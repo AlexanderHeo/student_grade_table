@@ -1,18 +1,3 @@
-// const path = require('path');
-// const jsonServer = require('json-server');
-
-// const dbPath = path.resolve(__dirname, '../database/db.json');
-// const server = jsonServer.create();
-// const middleware = jsonServer.defaults();
-// const endpoints = jsonServer.router(dbPath);
-
-// server.use(middleware);
-// server.use('/api', endpoints);
-// server.listen(3001, () => {
-//   // eslint-disable-next-line no-console
-//   console.log('JSON Server listening on port 3001\n');
-// });
-
 /* eslint-disable no-console */
 const express = require('express');
 const app = express();
@@ -111,10 +96,10 @@ app.post('/api/grades', (req, res) => {
     });
 });
 
-app.put('/api/grades/:gradeId', (req, res) => {
+app.patch('/api/grades/:gradeId', (req, res) => {
   const { gradeId } = req.params;
-  const updateGrade = req.body;
-  const grade = updateGrade.grade;
+  const course = req.body.course;
+  const grade = req.body.grade;
   if (!parseInt(gradeId)) {
     return res.status(400).json({
       error: 'The grade id must be a positive integer.'
@@ -126,12 +111,12 @@ app.put('/api/grades/:gradeId', (req, res) => {
   }
   const sql = `
     update "grades"
-      set "grade" = $1
-      where "gradeId" = $2
+      set "course" = $1, "grade" = $2
+      where "gradeId" = $3
       returning *;
   `;
   const params = ([
-    grade, gradeId
+    course, grade, gradeId
   ]);
   db.query(sql, params)
     .then(result => {
@@ -173,7 +158,7 @@ app.delete('/api/grades/:gradeId', (req, res) => {
           error: `Cannot find student at id ${gradeId}.`
         });
       } else {
-        res.status(204).json();
+        res.status(204).json(deletedGrade);
       }
     });
 });

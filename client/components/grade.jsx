@@ -16,11 +16,11 @@ class Grade extends React.Component {
   }
 
   render() {
+    const studentId = this.props.id;
     const student = this.props;
     const name = this.props.name;
     const course = this.props.course;
     const grade = this.props.grade;
-    const studentId = this.props.id;
     return (
       !name
         ? <tr>
