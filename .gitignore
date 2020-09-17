@@ -6,3 +6,4 @@ server/public/main.js*
 forum.css
 forum.html
 client/components/debug.log
+*.log

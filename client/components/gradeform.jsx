@@ -6,7 +6,7 @@ class Gradeform extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      validInput: '',
+      invalidMessage: '',
       id: '',
       name: '',
       course: '',
@@ -32,24 +32,29 @@ class Gradeform extends React.Component {
     this.setState({
       [name]: value,
       id: nextId,
-      validInput: false
+      invalidMessage: ''
     });
   }
 
   handleSubmit(event) {
     event.preventDefault();
+
     const parsedIntGrade = parseInt(this.state.grade);
     if (!this.state.name) {
       this.setState({
-        validInput: 'name'
+        invalidMessage: 'Please enter a name'
       });
     } else if (!this.state.course) {
       this.setState({
-        validInput: 'course'
+        invalidMessage: 'Please enter a course'
       });
     } else if (!this.state.grade) {
       this.setState({
-        validInput: 'grade'
+        invalidMessage: 'Please enter a grade'
+      });
+    } else if (this.state.grade && parsedIntGrade > 100) {
+      this.setState({
+        invalidMessage: 'Grade cannot be greater than 100'
       });
     } else {
       const newStudent = {
@@ -63,7 +68,7 @@ class Gradeform extends React.Component {
         name: '',
         course: '',
         grade: '',
-        validInput: ''
+        invalidMessage: ''
       }, () => this.props.onSubmit(newStudent));
     }
   }
@@ -77,67 +82,63 @@ class Gradeform extends React.Component {
   }
 
   render() {
-    const validInput = this.state.validInput;
+    const invalidMessage = this.state.invalidMessage;
     return (
       <div className="col-lg-4 col-md-12 col-sm-12">
-        <form onSubmit={ this.handleSubmit } onReset={ this.handleReset }>
+        <form onSubmit={this.handleSubmit} onReset={this.handleReset}>
           <div className="form-section">
             <label htmlFor="name">
-              <FontAwesomeIcon icon={ faUser } size='lg' />
+              <FontAwesomeIcon icon={faUser} size="lg" />
             </label>
             <input
               type="text"
               placeholder="name"
               name="name"
-              value={ this.state.name }
-              onChange={ this.handleChange }
+              value={this.state.name}
+              onChange={this.handleChange}
             />
           </div>
           <div className="form-section">
             <label htmlFor="course">
-              <FontAwesomeIcon icon={ faBook } size='lg' />
+              <FontAwesomeIcon icon={faBook} size="lg" />
             </label>
             <input
               type="text"
               placeholder="course"
               name="course"
-              value={ this.state.course }
-              onChange={ this.handleChange }
+              value={this.state.course}
+              onChange={this.handleChange}
             />
           </div>
           <div className="form-section">
             <label htmlFor="grade">
-              <FontAwesomeIcon icon={ faEdit } size='lg' />
+              <FontAwesomeIcon icon={faEdit} size="lg" />
             </label>
             <input
               type="number"
               placeholder="grade"
               name="grade"
-              value={ this.state.grade }
-              onChange={ this.handleChange }
+              value={this.state.grade}
+              onChange={this.handleChange}
             />
           </div>
           <div>
-            {
-              !validInput
-                ? <div className="buttonContainer">
-                  <input
-                    type="submit"
-                    value="Add"
-                    className="btn btn-primary"
-                  />
-                  <input
-                    type="reset"
-                    value="Cancel"
-                    className="btn btn-secondary"
-                  />
+            {!invalidMessage ? (
+              <div className="buttonContainer">
+                <input type="submit" value="Add" className="btn btn-primary" />
+                <input
+                  type="reset"
+                  value="Cancel"
+                  className="btn btn-secondary"
+                />
+              </div>
+            ) : (
+              <div className="validator">
+                <div className="validatorMessage">
+                  {this.state.invalidMessage}
                 </div>
-                : <div className="validator">
-                  <div className="validatorMessage">
-                    Please enter { this.state.validInput }
-                  </div>
-                </div>
-            }
+              </div>
+            )}
           </div>
         </form>
       </div>

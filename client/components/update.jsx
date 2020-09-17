@@ -48,38 +48,6 @@ class Update extends React.Component {
         grade: ''
       }, () => this.props.onSubmit(updatedStudent));
     }
-
-    // if (!this.state.course && !this.state.grade) {
-    //   updateCourse = this.props.studentToUpgrade.course;
-    //   const parsedIntGrade = parseInt(this.props.studentToUpgrade.grade);
-    //   const updatedStudent = {
-    //     id: this.state.id,
-    //     name: this.state.name,
-    //     course: updateCourse,
-    //     grade: parsedIntGrade
-    //   };
-    //   this.setState({
-    //     course: '',
-    //     grade: ''
-    //   }, () => this.props.onSubmit(updatedStudent));
-    // } else if (this.state.course && !this.state.grade) {
-    //   this.setState({
-    //     notValidInput: true
-    //   });
-    // } else {
-    //   updateCourse = this.props.studentToUpgrade.course;
-    //   const parsedIntGrade = parseInt(this.props.studentToUpgrade.grade);
-    //   const updatedStudent = {
-    //     id: this.state.id,
-    //     name: this.state.name,
-    //     course: updateCourse,
-    //     grade: parsedIntGrade
-    //   };
-    //   this.setState({
-    //     course: '',
-    //     grade: ''
-    //   }, () => this.props.onSubmit(updatedStudent));
-    // }
   }
 
   handleReset(event) {
@@ -112,7 +80,6 @@ class Update extends React.Component {
                 </label>
                 <input
                   type="text"
-                  // placeholder={ course }
                   name="course"
                   value={ this.state.course }
                   onChange={ this.handleChange }
@@ -124,7 +91,6 @@ class Update extends React.Component {
                 </label>
                 <input
                   type="number"
-                  // placeholder={ grade }
                   name="grade"
                   value={ this.state.grade }
                   onChange={ this.handleChange }

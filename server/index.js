@@ -77,6 +77,10 @@ app.post('/api/grades', (req, res) => {
     return res.status(400).json({
       error: 'Grade must be a positive integer.'
     });
+  } else if (parseInt(grade) > 100) {
+    return res.status(400).json({
+      error: 'Grade cannot be larger than 100.'
+    });
   }
   const sql = `
     insert into "grades" ("name", "course", "grade")
