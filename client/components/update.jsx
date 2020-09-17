@@ -9,8 +9,8 @@ class Update extends React.Component {
       notValidInput: '',
       id: this.props.studentToUpgrade.gradeId,
       name: this.props.studentToUpgrade.name,
-      course: '',
-      grade: ''
+      course: this.props.studentToUpgrade.course,
+      grade: this.props.studentToUpgrade.grade
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -90,15 +90,13 @@ class Update extends React.Component {
   render() {
     const student = this.props.studentToUpgrade;
     const name = this.props.studentToUpgrade.name;
-    const course = this.props.studentToUpgrade.course;
-    const grade = this.props.studentToUpgrade.grade;
     const notValidInput = this.state.notValidInput;
     return (
       <div className="updateModalContainer d-flex">
         <div className="updateModal">
           <div className="updateHeader d-flex flex-column">
             <div className="modalHeader">Update</div>
-            <div className="updateStudentName">{name}&apos;s</div>
+            <div className="updateStudentName"><span>{name}&apos;s</span></div>
             <div className="modalHeader">course or grade:</div>
           </div>
           <div className="updateForm mt-4">
@@ -114,7 +112,7 @@ class Update extends React.Component {
                 </label>
                 <input
                   type="text"
-                  placeholder={ course }
+                  // placeholder={ course }
                   name="course"
                   value={ this.state.course }
                   onChange={ this.handleChange }
@@ -126,7 +124,7 @@ class Update extends React.Component {
                 </label>
                 <input
                   type="number"
-                  placeholder={ grade }
+                  // placeholder={ grade }
                   name="grade"
                   value={ this.state.grade }
                   onChange={ this.handleChange }

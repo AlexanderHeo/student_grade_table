@@ -75,29 +75,24 @@ class App extends React.Component {
           addedNewStudent = gradesCopy.concat(jsonData);
         }
         this.getAverageGrades(addedNewStudent);
-        this.setState({
-          grades: addedNewStudent
-        });
+        this.setState({ grades: addedNewStudent });
       });
   }
 
   deleteGrade(deleteId) {
     fetch(`/api/grades/${deleteId}`, {
       method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json'
-      }
+      headers: { 'Content-Type': 'application/json' }
     })
-      .then(response => {
-        return null;
-      })
+      .then(response => null)
       .then(jsonData => {
         const gradesCopy = [...this.state.grades];
         const index = gradesCopy.findIndex(studentObj => studentObj.gradeId === deleteId);
         gradesCopy.splice(index, 1);
-        this.setState({
-          grades: gradesCopy
-        }, () => { this.getAverageGrades(gradesCopy); });
+        this.setState({ grades: gradesCopy },
+          () => {
+            this.getAverageGrades(gradesCopy);
+          });
         return jsonData;
       })
       .catch(err => console.error(err));
@@ -111,23 +106,17 @@ class App extends React.Component {
   }
 
   closeModal() {
-    this.setState({
-      updating: false
-    });
+    this.setState({ updating: false });
   }
 
   updateGrade(updateStudent) {
     const updateId = updateStudent.gradeId;
     fetch(`/api/grades/${updateId}`, {
       method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json'
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(updateStudent)
     })
-      .then(response => {
-        return response.json();
-      })
+      .then(response => response.json())
       .then(jsonData => {
         const gradesCopy = [...this.state.grades];
         const index = gradesCopy.findIndex(studentObj => {
