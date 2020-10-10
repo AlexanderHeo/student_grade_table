@@ -1,7 +1,7 @@
 import React from 'react';
 import Grade from './grade';
 
-function Gradetable(props) {
+const gradetable = props => {
   const grades = props.grades;
   if (grades.length === 0) {
     return (
@@ -34,9 +34,10 @@ function Gradetable(props) {
                     name={ x.name }
                     course={ x.course }
                     grade={ x.grade }
-                    onSubmit={ props.onSubmit }
                     id={ x.gradeId }
-                    onClick={ () => props.onClick(x) }
+                    // onSubmit={ props.onSubmit }
+                    // onClick={ () => props.onClick(x) }
+                    buttonClick= { props.buttonClick }
                   />
                 );
               })
@@ -46,6 +47,6 @@ function Gradetable(props) {
       </div>
     );
   }
-}
+};
 
-export default Gradetable;
+export default gradetable;
