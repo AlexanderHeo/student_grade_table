@@ -1,12 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-class Grade extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  handleClick(event, studentInfo) {
+class Grade extends Component {
+  handleClick = (event, studentInfo) => {
     const name = event.target.name;
     if (name === 'delete') {
       this.props.onSubmit(studentInfo);
