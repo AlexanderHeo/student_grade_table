@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 class Update extends Component {
 state = {
   notValidInput: '',
-  id: this.props.studentToUpgrade.gradeId,
+  id: this.props.studentToUpgrade.id,
   name: this.props.studentToUpgrade.name,
   course: this.props.studentToUpgrade.course,
   grade: this.props.studentToUpgrade.grade
@@ -33,7 +33,7 @@ handleSubmit = (event, student) => {
     });
   } else if (this.state.course && this.state.grade) {
     const updatedStudent = {
-      gradeId: this.state.id,
+      id: this.state.id,
       name: this.state.name,
       course: this.state.course,
       grade: parseInt(this.state.grade)

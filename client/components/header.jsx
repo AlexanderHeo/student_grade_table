@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Header(props) {
+const header = props => {
   return (
     <div className="row header">
       <div className="col-xl-7 col-lg-7 col-md-7 col-sm-7 col-12 headerxs d-flex">
@@ -16,6 +16,6 @@ function Header(props) {
       </div>
     </div>
   );
-}
+};
 
-export default Header;
+export default header;

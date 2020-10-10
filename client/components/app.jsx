@@ -102,7 +102,7 @@ closeModal = () => {
 }
 
 updateGrade = updateStudent => {
-  const updateId = updateStudent.gradeId;
+  const updateId = updateStudent.id;
   fetch(`/api/grades/${updateId}`, {
     method: 'PATCH',
     headers: { 'Content-Type': 'application/json' },
@@ -120,6 +120,15 @@ updateGrade = updateStudent => {
         updating: false
       }, () => { this.getAverageGrades(gradesCopy); });
     });
+}
+
+handleClick = (event, studentInfo) => {
+  const name = event.target.name;
+  if (name === 'delete') {
+    this.deleteGrade(studentInfo);
+  } else if (name === 'update') {
+    this.showModal(studentInfo);
+  }
 }
 
 render() {
@@ -141,8 +150,9 @@ render() {
       <div className="row gradetableform">
         <Gradetable
           grades={ this.state.grades }
-          onSubmit={ this.deleteGrade }
-          onClick={ this.showModal }
+          // onSubmit={ this.deleteGrade }
+          // onClick={ this.showModal }
+          buttonClick={ this.handleClick }
         />
         <Gradeform
           grades={ this.state.grades }
